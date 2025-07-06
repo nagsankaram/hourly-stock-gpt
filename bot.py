@@ -1,7 +1,6 @@
 import os
 import requests
 import csv
-import shutil
 from datetime import datetime
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
@@ -23,45 +22,54 @@ def ask_llm(prompt):
         "temperature": 0.7
     }
 
-    response = requests.post(OPENROUTER_URL, headers=headers, json=body)
-    result = response.json()
-
-    if "choices" not in result:
-        print("LLM error:", result)
-        return "❌ LLM returned no valid response."
-
-    return result["choices"][0]["message"]["content"]
+    try:
+        response = requests.post(OPENROUTER_URL, headers=headers, json=body)
+        result = response.json()
+        if "choices" not in result:
+            print("LLM error:", result)
+            return "❌ LLM returned no valid response.\n\n" + str(result)
+        return result["choices"][0]["message"]["content"]
+    except Exception as e:
+        print("❌ LLM API call failed:", e)
+        return f"❌ LLM API call failed: {e}"
 
 def generate_prompt(tickers):
     return f"""
-You are an expert Indian stock advisor. Analyze the following 500 stocks and give today's investment recommendations.
+You are a professional Indian stock trader and advisor.
 
-Tickers: {', '.join(tickers)}
-
-Classify them into:
+Analyze the following 500 NSE stock tickers and recommend investments in 3 categories:
 - Short-term (1–5 days)
 - Mid-term (2–8 weeks)
 - Long-term (3+ months)
 
-For each category, recommend 3–5 stocks with a one-line reason. Avoid repeating company names across categories.
+📌 For each category, list 3–5 stocks using this format:
+
+- TICKER — Entry: ₹XXX, Target: ₹YYY, Stop Loss: ₹ZZZ — Reason: ...
+
+✅ Do NOT repeat any company in multiple categories.
+✅ Only use tickers from this list: {', '.join(tickers)}
+✅ Be concise and specific.
 """
 
 def main():
     tickers = read_tickers()
     if not tickers:
-        print("⚠️ No valid tickers to process.")
+        print("⚠️ No valid tickers found in tickers.csv")
         return
 
-    prompt = generate_prompt(tickers[:500])  # limit prompt size
+    prompt = generate_prompt(tickers[:500])
     response = ask_llm(prompt)
 
-    with open("report.md", "w") as f:
-        f.write(f"# Hourly Stock GPT Report ({datetime.now().isoformat()})\n\n")
-        f.write(response)
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+    markdown = f"# 📈 Hourly Stock GPT Report ({timestamp})\n\n{response}"
 
-    # ✅ Show on GitHub Pages
-    shutil.copy("report.md", "index.md")
-    print("✅ Report generated and published as index.md")
+    with open("report.md", "w") as f:
+        f.write(markdown)
+
+    with open("index.md", "w") as f:
+        f.write(markdown)
+
+    print("✅ Report written to report.md and index.md")
 
 if __name__ == "__main__":
     main()
