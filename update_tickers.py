@@ -2,62 +2,70 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
+BASE_URL = "https://www.screener.in/screens/2918344/top-500-quality/?page="
+
 def update_tickers():
-    url = "https://www.screener.in/screens/2918344/top-500-quality/"
     headers = {
         "User-Agent": "Mozilla/5.0"
     }
 
-    r = requests.get(url, headers=headers)
-    if r.status_code != 200:
-        raise Exception("Failed to fetch Screener.in data")
-
-    # Dump response HTML for debugging if needed
-    with open("debug_screener.html", "w", encoding="utf-8") as debug_file:
-        debug_file.write(r.text)
-
-    soup = BeautifulSoup(r.text, "html.parser")
-    table = soup.find("table", class_="data-table")
-    if not table:
-        raise Exception("Could not find stock table in Screener HTML")
-
-    rows = table.find_all("tr")[1:]
-    print(f"🔍 Found {len(rows)} stock rows")
-
     stocks = []
+    page = 1
 
-    for row in rows:
-        cols = row.find_all("td")
-        if len(cols) < 6:
-            continue
+    while True:
+        print(f"🔄 Fetching page {page}...")
+        r = requests.get(BASE_URL + str(page), headers=headers)
+        if r.status_code != 200:
+            print(f"❌ Failed to load page {page}")
+            break
 
-        link = cols[0].find("a", href=True)
-        if not link:
-            continue
+        soup = BeautifulSoup(r.text, "html.parser")
+        table = soup.find("table", class_="data-table")
+        if not table:
+            print(f"✅ No table found on page {page}, ending loop.")
+            break
 
-        try:
-            symbol = link["href"].split("/")[2].strip().upper()
-            if not symbol.endswith(".NS"):
-                symbol += ".NS"
+        rows = table.find_all("tr")[1:]
+        if not rows:
+            print(f"✅ No more rows on page {page}, ending loop.")
+            break
 
-            market_cap = parse_float(cols[1].text)
-            current_price = parse_float(cols[2].text)
-            change_percent = parse_float(cols[3].text)
-            volume = parse_int(cols[4].text)
-            pe_ratio = parse_float(cols[5].text)
+        print(f"🔍 Found {len(rows)} rows on page {page}")
 
-            score = (volume * abs(change_percent)) / (pe_ratio + 1)
+        for row in rows:
+            cols = row.find_all("td")
+            if len(cols) < 6:
+                continue
 
-            print(f"Parsed: {symbol} | Vol: {volume}, Δ%: {change_percent}, PE: {pe_ratio}, Score: {score:.2f}")
+            link = cols[0].find("a", href=True)
+            if not link:
+                continue
 
-            stocks.append({
-                "symbol": symbol,
-                "score": score
-            })
+            try:
+                symbol = link["href"].split("/")[2].strip().upper()
+                if not symbol.endswith(".NS"):
+                    symbol += ".NS"
 
-        except Exception as e:
-            print(f"⚠️ Skipped row due to error: {e}")
-            continue
+                market_cap = parse_float(cols[1].text)
+                current_price = parse_float(cols[2].text)
+                change_percent = parse_float(cols[3].text)
+                volume = parse_int(cols[4].text)
+                pe_ratio = parse_float(cols[5].text)
+
+                score = (volume * abs(change_percent)) / (pe_ratio + 1)
+
+                stocks.append({
+                    "symbol": symbol,
+                    "score": score
+                })
+
+            except Exception as e:
+                print(f"⚠️ Skipped row due to error: {e}")
+                continue
+
+        page += 1
+
+    print(f"📊 Total stocks collected: {len(stocks)}")
 
     sorted_stocks = sorted(stocks, key=lambda x: x["score"], reverse=True)
     top_500 = sorted_stocks[:500]
