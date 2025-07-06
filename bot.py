@@ -4,7 +4,7 @@ import csv
 from datetime import datetime
 
 TOGETHER_API_KEY = os.getenv("TOGETHER_API_KEY")
-MODEL = "mistralai/Mixtral-8x7B-Instruct-v0.1"
+MODEL = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free"
 TOGETHER_URL = "https://api.together.xyz/v1/chat/completions"
 
 def read_tickers():
