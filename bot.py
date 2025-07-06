@@ -25,7 +25,19 @@ def ask_llm(prompt):
     }
     body = {
         "model": MODEL,
-        "messages": [{"role": "user", "content": prompt}],
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "Reply only in markdown format with no commentary, no thinking aloud, and no explanation. "
+                    "Start directly with the category headers. Do not include any greetings, summaries, or transition statements."
+                )
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
         "temperature": 0.7
     }
 
@@ -35,16 +47,24 @@ def ask_llm(prompt):
         if "choices" not in result:
             print("LLM error:", result)
             return "❌ LLM returned no valid response.\n\n" + str(result)
-        return result["choices"][0]["message"]["content"]
+
+        text = result["choices"][0]["message"]["content"]
+
+        # Post-process to strip anything before "## Short-term"
+        if "## Short-term" in text:
+            text = "## Short-term" + text.split("## Short-term", 1)[1]
+
+        return text
+
     except Exception as e:
         print("❌ LLM API call failed:", e)
         return f"❌ LLM API call failed: {e}"
 
 def generate_prompt(ticker_lines):
     return f"""
-You are a professional Indian stock trader and advisor.
+You are a professional Indian stock advisor.
 
-Below are current CMPs (Current Market Prices) for 500 NSE stocks:
+Below are the current CMPs (Current Market Prices) for 200 NSE stocks:
 
 {chr(10).join(ticker_lines)}
 
@@ -54,14 +74,14 @@ Classify 3–5 stocks into each of the following categories:
 ## Mid-term (2–8 weeks)
 ## Long-term (3+ months)
 
-🔁 For each category, list 3–5 stocks using ONLY this format:
+🔁 For each category, list 3–5 stocks using this format only:
 
 - SYMBOL — Entry: ₹XXX, Target: ₹YYY, Stop Loss: ₹ZZZ — Reason: ...
 
-✅ Do NOT include any explanation before or after the list.
-✅ Do NOT comment on your reasoning or say things like "Let's begin".
-✅ Output only markdown with clean headers and bullet points.
-✅ Use only tickers from the list above. Do not repeat stocks across categories.
+✅ No explanation. No commentary. No introductions. No summaries.
+✅ Start immediately with ## Short-term header.
+✅ Do NOT include anything before or after the lists.
+✅ Only use tickers from the list above.
 """
 
 def main():
@@ -70,7 +90,7 @@ def main():
         print("⚠️ No valid tickers found in tickers.csv")
         return
 
-    prompt = generate_prompt(ticker_lines[:500])
+    prompt = generate_prompt(ticker_lines[:200])  # Limit to 200 stocks
     response = ask_llm(prompt)
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
