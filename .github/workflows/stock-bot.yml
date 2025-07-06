@@ -2,7 +2,7 @@ name: Stock Bot
 
 on:
   schedule:
-    - cron: "30 * * * *"  # every hour at :30
+    - cron: '0 3 * * *'  # Every day at 09:00 AM IST
   workflow_dispatch:
 
 jobs:
