@@ -1,7 +1,7 @@
 import os
 import requests
 import csv
-from datetime import datetime
+from datetime import datetime, timedelta
 
 TOGETHER_API_KEY = os.getenv("TOGETHER_API_KEY")
 MODEL = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free"
@@ -50,7 +50,7 @@ def ask_llm(prompt):
 
         text = result["choices"][0]["message"]["content"]
 
-        # Post-process to strip anything before "## Short-term"
+        # Clean output: remove any lead-in thinking
         if "## Short-term" in text:
             text = "## Short-term" + text.split("## Short-term", 1)[1]
 
@@ -74,7 +74,7 @@ Classify 3–5 stocks into each of the following categories:
 ## Mid-term (2–8 weeks)
 ## Long-term (3+ months)
 
-🔁 For each category, list 3–5 stocks using this format only:
+🔁 For each category, list 3–5 stocks using ONLY this format:
 
 - SYMBOL — Entry: ₹XXX, Target: ₹YYY, Stop Loss: ₹ZZZ — Reason: ...
 
@@ -90,11 +90,16 @@ def main():
         print("⚠️ No valid tickers found in tickers.csv")
         return
 
-    prompt = generate_prompt(ticker_lines[:200])  # Limit to 200 stocks
+    prompt = generate_prompt(ticker_lines[:200])
     response = ask_llm(prompt)
 
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-    markdown = f"# 📈 Hourly Stock GPT Report ({timestamp})\n\n{response}"
+    # Format timestamp in IST
+    utc_now = datetime.utcnow()
+    ist_now = utc_now + timedelta(hours=5, minutes=30)
+    timestamp = ist_now.strftime("%Y-%m-%d %H:%M IST")
+
+    # Add Jekyll front matter to enable GitHub Pages rendering
+    markdown = f"---\nlayout: default\n---\n\n# 📈 Hourly Stock GPT Report ({timestamp})\n\n{response}"
 
     with open("report.md", "w") as f:
         f.write(markdown)
