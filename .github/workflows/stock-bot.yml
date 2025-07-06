@@ -33,4 +33,4 @@ jobs:
           git config --global user.name "HourlyBot"
           git add tickers.csv report.md
           git commit -m "Update tickers and report"
-          git push
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/nagsankaram/hourly-stock-gpt.git
