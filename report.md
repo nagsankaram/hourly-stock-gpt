@@ -1,5 +1,5 @@
-# 📈 Hourly Stock GPT Report (2025-07-06 17:38)
+# 📈 Hourly Stock GPT Report (2025-07-06 17:42)
 
 ❌ LLM returned no valid response.
 
-{'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1751846400000'}, 'provider_name': None}}, 'user_id': 'user_2z7af46K2OGkPvHRst9YFqNPZU5'}
+{'id': 'o21fcrA-3NKUce-95b0e6209c6bacb1', 'error': {'message': 'Invalid API key provided. You can find your API key at https://api.together.xyz/settings/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
