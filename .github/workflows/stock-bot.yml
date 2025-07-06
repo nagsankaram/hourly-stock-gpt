@@ -29,8 +29,9 @@ jobs:
         run: python bot.py
 
       - name: Check token (sanity)
-        run: echo "Using GH_TOKEN: ${{ secrets.GH_TOKEN }}"
-        
+        run: |
+          echo "GitHub token is set to: ${{ secrets.GH_TOKEN }}"
+
       - name: Push updated tickers and report
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
