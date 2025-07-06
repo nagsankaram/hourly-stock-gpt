@@ -91,7 +91,7 @@ def update_tickers():
             break
 
     print(f"📊 Total stocks scraped: {len(stocks)}")
-    top = sorted(stocks, key=lambda x: x["score"], reverse=True)[:500]
+    top = sorted(stocks, key=lambda x: x["score"], reverse=True)[:200]
 
     with open("tickers.csv", "w", newline="") as f:
         writer = csv.writer(f)
