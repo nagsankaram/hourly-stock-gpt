@@ -1,38 +1,42 @@
 import requests
+from bs4 import BeautifulSoup
 import csv
 
 def update_tickers():
-    # NSE blocks requests without proper headers
-    url = "https://www1.nseindia.com/content/indices/ind_nifty500list.csv"
+    url = "https://www.screener.in/screens/339816/top-500/"
     headers = {
-        "User-Agent": "Mozilla/5.0",
-        "Referer": "https://www1.nseindia.com/"
+        "User-Agent": "Mozilla/5.0"
     }
 
-    response = requests.get(url, headers=headers)
+    r = requests.get(url, headers=headers)
+    if r.status_code != 200:
+        raise Exception("Failed to fetch Screener.in data")
 
-    if response.status_code != 200 or "html" in response.text.lower():
-        raise Exception("Failed to fetch CSV. NSE may be blocking the request.")
+    soup = BeautifulSoup(r.text, "html.parser")
+    table = soup.find("table", class_="data-table")
+    if not table:
+        raise Exception("Could not find stock table in Screener HTML")
 
-    lines = response.text.strip().splitlines()
-    reader = csv.reader(lines)
-    next(reader)  # skip header
+    rows = table.find_all("tr")[1:]  # Skip header row
 
     tickers = []
-    for row in reader:
-        if len(row) < 2:
-            continue
-        symbol = row[2].strip() if len(row) >= 3 else row[0].strip()
-        if not symbol.endswith(".NS"):
-            symbol += ".NS"
-        tickers.append(symbol)
+    for row in rows:
+        link = row.find("a", href=True)
+        if link:
+            # Extract company slug from URL: /company/TATAMOTORS/consolidated/
+            parts = link["href"].split("/")
+            if len(parts) > 2:
+                symbol = parts[2].strip().upper()
+                if symbol and not symbol.endswith(".NS"):
+                    symbol += ".NS"
+                tickers.append(symbol)
 
     with open("tickers.csv", "w", newline="") as f:
         writer = csv.writer(f)
         for t in tickers:
             writer.writerow([t])
 
-    print(f"✅ Updated {len(tickers)} tickers.")
+    print(f"✅ Updated {len(tickers)} tickers from Screener.in")
 
 if __name__ == "__main__":
     update_tickers()
