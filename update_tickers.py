@@ -4,6 +4,18 @@ import csv
 
 BASE_URL = "https://www.screener.in/screens/2918344/top-500-quality/?page="
 
+def parse_float(text):
+    try:
+        return float(text.replace(",", "").replace("%", "").strip())
+    except:
+        return 0.0
+
+def parse_int(text):
+    try:
+        return int(text.replace(",", "").strip())
+    except:
+        return 0
+
 def update_tickers():
     headers = {
         "User-Agent": "Mozilla/5.0"
@@ -25,10 +37,16 @@ def update_tickers():
             print(f"✅ No table found on page {page}, ending loop.")
             break
 
-        rows = table.find_all("tr")[1:]
-        stock_rows = [row for row in rows if row.find_all("td")[0].find("a", href=True)]
-        print(f"🔍 Found {len(stock_rows)} stock rows on page {page}")
+        rows = table.find_all("tr")[1:]  # skip the header
+        stock_rows = []
+        for row in rows:
+            cols = row.find_all("td")
+            if len(cols) < 6:
+                continue
+            if cols[0].find("a", href=True):
+                stock_rows.append(row)
 
+        print(f"🔍 Found {len(stock_rows)} stock rows on page {page}")
         if len(stock_rows) == 0:
             break
 
@@ -53,7 +71,7 @@ def update_tickers():
                 })
 
             except Exception as e:
-                print(f"⚠️ Skipped row: {e}")
+                print(f"⚠️ Skipped row due to error: {e}")
                 continue
 
         page += 1
@@ -68,18 +86,6 @@ def update_tickers():
             writer.writerow([stock["symbol"]])
 
     print(f"✅ Saved top {len(top_500)} tickers to tickers.csv")
-
-def parse_float(text):
-    try:
-        return float(text.replace(",", "").replace("%", "").strip())
-    except:
-        return 0.0
-
-def parse_int(text):
-    try:
-        return int(text.replace(",", "").strip())
-    except:
-        return 0
 
 if __name__ == "__main__":
     update_tickers()
