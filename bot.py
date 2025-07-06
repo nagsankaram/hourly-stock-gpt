@@ -7,9 +7,16 @@ TOGETHER_API_KEY = os.getenv("TOGETHER_API_KEY")
 MODEL = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free"
 TOGETHER_URL = "https://api.together.xyz/v1/chat/completions"
 
-def read_tickers():
+def read_ticker_lines():
+    lines = []
     with open("tickers.csv", "r") as f:
-        return [line.strip() for line in f if line.strip() and line.strip() != ".NS"]
+        reader = csv.DictReader(f)
+        for row in reader:
+            symbol = row["Symbol"]
+            cmp = row["CMP"]
+            if symbol and cmp and symbol != ".NS":
+                lines.append(f"{symbol} — CMP ₹{cmp}")
+    return lines
 
 def ask_llm(prompt):
     headers = {
@@ -33,31 +40,33 @@ def ask_llm(prompt):
         print("❌ LLM API call failed:", e)
         return f"❌ LLM API call failed: {e}"
 
-def generate_prompt(tickers):
+def generate_prompt(ticker_lines):
     return f"""
 You are a professional Indian stock trader and advisor.
 
-Analyze the following 500 NSE stock tickers and recommend investments in 3 categories:
-- Short-term (1–5 days)
-- Mid-term (2–8 weeks)
-- Long-term (3+ months)
+Below are current CMPs (Current Market Prices) for 500 stocks:
 
-📌 For each category, list 3–5 stocks using this format:
+{chr(10).join(ticker_lines)}
 
-- TICKER — Entry: ₹XXX, Target: ₹YYY, Stop Loss: ₹ZZZ — Reason: ...
+Classify 3–5 stocks into each of the following categories:
+- 📉 Short-term (1–5 days)
+- 📈 Mid-term (2–8 weeks)
+- 🏦 Long-term (3+ months)
 
-✅ Do NOT repeat any company in multiple categories.
-✅ Only use tickers from this list: {', '.join(tickers)}
-✅ Be concise and specific.
+Use this format exactly:
+- SYMBOL — Entry: ₹XXX, Target: ₹YYY, Stop Loss: ₹ZZZ — Reason: ...
+
+✅ Don't repeat any stock in multiple categories.
+✅ Ensure entry price is near CMP. Be precise and concise.
 """
 
 def main():
-    tickers = read_tickers()
-    if not tickers:
+    ticker_lines = read_ticker_lines()
+    if not ticker_lines:
         print("⚠️ No valid tickers found in tickers.csv")
         return
 
-    prompt = generate_prompt(tickers[:500])
+    prompt = generate_prompt(ticker_lines[:500])
     response = ask_llm(prompt)
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")

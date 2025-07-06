@@ -74,7 +74,10 @@ def update_tickers():
 
                 stocks.append({
                     "symbol": symbol,
-                    "score": score
+                    "cmp": price,
+                    "score": score,
+                    "roce": roce,
+                    "volume": volume
                 })
 
             except Exception as e:
@@ -92,8 +95,15 @@ def update_tickers():
 
     with open("tickers.csv", "w", newline="") as f:
         writer = csv.writer(f)
+        writer.writerow(["Symbol", "CMP", "Score", "ROCE", "Volume"])
         for stock in top:
-            writer.writerow([stock["symbol"]])
+            writer.writerow([
+                stock["symbol"],
+                stock["cmp"],
+                stock["score"],
+                stock["roce"],
+                stock["volume"]
+            ])
 
     print(f"✅ Saved {len(top)} tickers to tickers.csv")
 
