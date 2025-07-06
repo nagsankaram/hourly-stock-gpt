@@ -1,16 +1,20 @@
-# 📈 Hourly Stock GPT Report (2025-07-06 18:45)
+---
+layout: default
+---
+
+# 📈 Hourly Stock GPT Report (2025-07-07 00:22 IST)
 
 ## Short-term (1–5 days)
-- NMDC.NS — Entry: ₹68.78, Target: ₹72.0, Stop Loss: ₹65.0 — Reason: Positive news on mining leases, expected short-term momentum.
-- COALINDIA.NS — Entry: ₹386.1, Target: ₹400.0, Stop Loss: ₹370.0 — Reason: Support level nearby, potential rebound.
-- SIGACHI.NS — Entry: ₹44.82, Target: ₹48.0, Stop Loss: ₹42.0 — Reason: Recent positive developments in pharma business.
+- SIGACHI.NS — Entry: ₹44.82, Target: ₹50.0, Stop Loss: ₹42.0 — Reason: Expecting short-term momentum
+- SINDHUTRAD.NS — Entry: ₹35.74, Target: ₹40.0, Stop Loss: ₹34.0 — Reason: Potential breakout
+- MOREPENLAB.NS — Entry: ₹65.36, Target: ₹75.0, Stop Loss: ₹62.0 — Reason: Oversold bounce expected
 
 ## Mid-term (2–8 weeks)
-- BEL.NS — Entry: ₹427.55, Target: ₹450.0, Stop Loss: ₹410.0 — Reason: Defense sector growth expectations.
-- GAIL.NS — Entry: ₹193.41, Target: ₹210.0, Stop Loss: ₹185.0 — Reason: Expected improvement in energy sector.
-- BPCL.NS — Entry: ₹346.2, Target: ₹360.0, Stop Loss: ₹335.0 — Reason: Oil marketing companies' expected performance.
+- COALINDIA.NS — Entry: ₹386.1, Target: ₹420.0, Stop Loss: ₹370.0 — Reason: Stable demand outlook
+- NMDC.NS — Entry: ₹68.78, Target: ₹80.0, Stop Loss: ₹65.0 — Reason: Sectoral recovery
+- IGL.NS — Entry: ₹226.1, Target: ₹260.0, Stop Loss: ₹220.0 — Reason: Gas demand growth
 
 ## Long-term (3+ months)
-- HINDALCO.NS — Entry: ₹699.45, Target: ₹750.0, Stop Loss: ₹675.0 — Reason: Positive outlook for metals and aluminum sector.
-- ITC.NS — Entry: ₹412.55, Target: ₹450.0, Stop Loss: ₹400.0 — Reason: Diversified business model and FMCG growth.
-- TATAMOTORS.NS — Entry: ₹689.05, Target: ₹750.0, Stop Loss: ₹650.0 — Reason: Electric vehicle and automotive sector growth.
+- TATAMOTORS.NS — Entry: ₹689.05, Target: ₹800.0, Stop Loss: ₹650.0 — Reason: Auto sector recovery
+- INFY.NS — Entry: ₹1640.7, Target: ₹1800.0, Stop Loss: ₹1580.0 — Reason: IT sector growth
+- BEL.NS — Entry: ₹427.55, Target: ₹500.0, Stop Loss: ₹410.0 — Reason: Defense sector expansion
