@@ -1,0 +1,36 @@
+name: Hourly Stock Bot with Auto-Ticker
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install yfinance requests
+
+      - name: Update tickers list
+        run: python update_tickers.py
+
+      - name: Run stock analysis bot
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python bot.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.email "nagendrakumars@yahoo.co.uk"
+          git config --global user.name "HourlyBot"
+          git add tickers.csv report.md
+          git commit -m "Update tickers and report"
+          git push
