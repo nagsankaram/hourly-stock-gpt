@@ -4,6 +4,14 @@ import csv
 
 BASE_URL = "https://www.screener.in/screens/2918344/top-500-quality/?page="
 
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/122.0.0.0 Safari/537.36"
+    )
+}
+
 def parse_float(text):
     try:
         return float(text.replace(",", "").replace("%", "").strip())
@@ -17,86 +25,75 @@ def parse_int(text):
         return 0
 
 def update_tickers():
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/120.0.0.0 Safari/537.36"
-        )
-    }
-
     stocks = []
     page = 1
 
     while True:
         print(f"🔄 Fetching page {page}...")
-        url = BASE_URL + str(page)
-        response = requests.get(url, headers=headers)
-
-        if response.status_code != 200:
-            print(f"❌ Failed to load page {page} (status {response.status_code})")
+        url = f"{BASE_URL}{page}"
+        res = requests.get(url, headers=HEADERS)
+        if res.status_code != 200:
+            print(f"❌ Failed to load page {page}")
             break
 
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(res.text, "html.parser")
         table = soup.find("table", class_="data-table")
-
         if not table:
-            print(f"❌ No table found on page {page}, printing HTML for debug")
-            with open("debug_page.html", "w", encoding="utf-8") as f:
-                f.write(response.text)
+            print(f"❌ No table found on page {page}")
             break
 
-        rows = table.find_all("tr")
-        stock_rows = []
+        rows = table.select("tr[data-row-company-id]")
+        print(f"✅ Found {len(rows)} stock rows")
 
-        for row in rows[1:]:  # skip header
+        for row in rows:
             cols = row.find_all("td")
             if len(cols) < 6:
                 continue
-            link = cols[0].find("a", href=True)
-            if link:
-                stock_rows.append((cols, link))
+            link = cols[1].find("a", href=True)
+            if not link:
+                continue
 
-        print(f"🔍 Found {len(stock_rows)} stock rows on page {page}")
-        if not stock_rows:
-            break
-
-        for cols, link in stock_rows:
             try:
-                symbol = link["href"].split("/")[2].strip().upper()
+                symbol = link["href"].split("/")[4].upper()
                 if not symbol.endswith(".NS"):
                     symbol += ".NS"
 
-                market_cap = parse_float(cols[1].text)
-                current_price = parse_float(cols[2].text)
-                change_percent = parse_float(cols[3].text)
-                volume = parse_int(cols[4].text)
-                pe_ratio = parse_float(cols[5].text)
+                price = parse_float(cols[2].text)
+                pe = parse_float(cols[3].text)
+                mcap = parse_float(cols[4].text)
+                yield_ = parse_float(cols[5].text)
+                roce = parse_float(cols[10].text)
+                volume = parse_int(cols[11].text)
 
-                score = (volume * abs(change_percent)) / (pe_ratio + 1)
+                score = (volume * roce) / (pe + 1)
 
                 stocks.append({
                     "symbol": symbol,
-                    "score": score
+                    "score": score,
+                    "roce": roce,
+                    "volume": volume
                 })
 
             except Exception as e:
-                print(f"⚠️ Skipped row due to error: {e}")
+                print(f"⚠️ Error parsing row: {e}")
                 continue
 
+        if len(rows) < 25:
+            break  # last page
         page += 1
+        if page > 26:
+            break
 
-    print(f"📊 Total stocks collected: {len(stocks)}")
+    print(f"📊 Total stocks scraped: {len(stocks)}")
 
-    sorted_stocks = sorted(stocks, key=lambda x: x["score"], reverse=True)
-    top_500 = sorted_stocks[:500]
+    top = sorted(stocks, key=lambda x: x["score"], reverse=True)[:500]
 
     with open("tickers.csv", "w", newline="") as f:
         writer = csv.writer(f)
-        for stock in top_500:
+        for stock in top:
             writer.writerow([stock["symbol"]])
 
-    print(f"✅ Saved top {len(top_500)} tickers to tickers.csv")
+    print(f"✅ Saved {len(top)} tickers to tickers.csv")
 
 if __name__ == "__main__":
     update_tickers()
