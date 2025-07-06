@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import csv
 
 BASE_URL = "https://www.screener.in/screens/2918344/top-500-quality/?page="
-
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -54,24 +53,30 @@ def update_tickers():
                 continue
 
             try:
-                symbol = link["href"].split("/")[4].upper()
-                if not symbol.endswith(".NS"):
-                    symbol += ".NS"
+                href = link["href"]
+                parts = href.strip("/").split("/")
+                if len(parts) >= 2 and parts[0] == "company":
+                    symbol = parts[1].upper()
+                    if not symbol.endswith(".NS"):
+                        symbol += ".NS"
+                else:
+                    print(f"⚠️ Unexpected href format: {href}")
+                    continue
 
                 price = parse_float(cols[2].text)
                 pe = parse_float(cols[3].text)
                 mcap = parse_float(cols[4].text)
                 yield_ = parse_float(cols[5].text)
-                roce = parse_float(cols[10].text)
-                volume = parse_int(cols[11].text)
+                roce = parse_float(cols[10].text) if len(cols) > 10 else 0
+                volume = parse_int(cols[11].text) if len(cols) > 11 else 0
 
                 score = (volume * roce) / (pe + 1)
 
+                print(f"✅ {symbol} → ROCE: {roce}, Vol: {volume}, Score: {score:.2f}")
+
                 stocks.append({
                     "symbol": symbol,
-                    "score": score,
-                    "roce": roce,
-                    "volume": volume
+                    "score": score
                 })
 
             except Exception as e:
@@ -79,13 +84,12 @@ def update_tickers():
                 continue
 
         if len(rows) < 25:
-            break  # last page
+            break
         page += 1
         if page > 26:
             break
 
     print(f"📊 Total stocks scraped: {len(stocks)}")
-
     top = sorted(stocks, key=lambda x: x["score"], reverse=True)[:500]
 
     with open("tickers.csv", "w", newline="") as f:

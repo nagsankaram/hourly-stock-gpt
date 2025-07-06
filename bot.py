@@ -4,12 +4,12 @@ import csv
 from datetime import datetime
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-MODEL = "mistralai/mixtral-8x7b"  # or another supported free model
+MODEL = "deepseek/deepseek-chat-v3-0324:free"  # ✅ valid free model
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 def read_tickers():
     with open("tickers.csv", "r") as f:
-        return [line.strip() for line in f.readlines()]
+        return [line.strip() for line in f if line.strip() != ".NS"]
 
 def chunk_list(lst, size):
     for i in range(0, len(lst), size):
@@ -41,11 +41,15 @@ You are a professional Indian stock advisor. Analyze the following 50 tickers fo
 
 Tickers: {', '.join(tickers)}
 
-Give separate lists for short-term (1–5 days), mid-term (2–8 weeks), and long-term (3+ months). Mention 3–5 tickers per category with a reason for each. Be concise.
+Give 3–5 recommendations for each category, with one-line reasons for each. Avoid repetitive explanations.
 """
 
 def main():
     tickers = read_tickers()
+    if not tickers:
+        print("⚠️ No valid tickers to process.")
+        return
+
     all_outputs = []
 
     for chunk in chunk_list(tickers, 50):
