@@ -60,19 +60,17 @@ def update_tickers():
                     if not symbol.endswith(".NS"):
                         symbol += ".NS"
                 else:
-                    print(f"⚠️ Unexpected href format: {href}")
                     continue
 
                 price = parse_float(cols[2].text)
                 pe = parse_float(cols[3].text)
-                mcap = parse_float(cols[4].text)
-                yield_ = parse_float(cols[5].text)
                 roce = parse_float(cols[10].text) if len(cols) > 10 else 0
                 volume = parse_int(cols[11].text) if len(cols) > 11 else 0
 
-                score = (volume * roce) / (pe + 1)
+                if not symbol or symbol == ".NS":
+                    continue
 
-                print(f"✅ {symbol} → ROCE: {roce}, Vol: {volume}, Score: {score:.2f}")
+                score = (volume * roce) / (pe + 1)
 
                 stocks.append({
                     "symbol": symbol,

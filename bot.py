@@ -1,19 +1,16 @@
 import os
 import requests
 import csv
+import shutil
 from datetime import datetime
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-MODEL = "deepseek/deepseek-chat-v3-0324:free"  # ✅ valid free model
+MODEL = "deepseek/deepseek-chat-v3-0324:free"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 def read_tickers():
     with open("tickers.csv", "r") as f:
-        return [line.strip() for line in f if line.strip() != ".NS"]
-
-def chunk_list(lst, size):
-    for i in range(0, len(lst), size):
-        yield lst[i:i + size]
+        return [line.strip() for line in f if line.strip() and line.strip() != ".NS"]
 
 def ask_llm(prompt):
     headers = {
@@ -37,11 +34,16 @@ def ask_llm(prompt):
 
 def generate_prompt(tickers):
     return f"""
-You are a professional Indian stock advisor. Analyze the following 50 tickers for today's short-term, mid-term, and long-term investment opportunities.
+You are an expert Indian stock advisor. Analyze the following 500 stocks and give today's investment recommendations.
 
 Tickers: {', '.join(tickers)}
 
-Give 3–5 recommendations for each category, with one-line reasons for each. Avoid repetitive explanations.
+Classify them into:
+- Short-term (1–5 days)
+- Mid-term (2–8 weeks)
+- Long-term (3+ months)
+
+For each category, recommend 3–5 stocks with a one-line reason. Avoid repeating company names across categories.
 """
 
 def main():
@@ -50,20 +52,16 @@ def main():
         print("⚠️ No valid tickers to process.")
         return
 
-    all_outputs = []
-
-    for chunk in chunk_list(tickers, 50):
-        prompt = generate_prompt(chunk)
-        response = ask_llm(prompt)
-        all_outputs.append(response)
-
-    final_output = "\n\n".join(all_outputs)
+    prompt = generate_prompt(tickers[:500])  # limit prompt size
+    response = ask_llm(prompt)
 
     with open("report.md", "w") as f:
         f.write(f"# Hourly Stock GPT Report ({datetime.now().isoformat()})\n\n")
-        f.write(final_output)
+        f.write(response)
 
-    print("✅ Report generated as report.md")
+    # ✅ Show on GitHub Pages
+    shutil.copy("report.md", "index.md")
+    print("✅ Report generated and published as index.md")
 
 if __name__ == "__main__":
     main()
