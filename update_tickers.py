@@ -18,7 +18,11 @@ def parse_int(text):
 
 def update_tickers():
     headers = {
-        "User-Agent": "Mozilla/5.0"
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        )
     }
 
     stocks = []
@@ -26,34 +30,40 @@ def update_tickers():
 
     while True:
         print(f"🔄 Fetching page {page}...")
-        r = requests.get(BASE_URL + str(page), headers=headers)
-        if r.status_code != 200:
-            print(f"❌ Failed to load page {page}")
+        url = BASE_URL + str(page)
+        response = requests.get(url, headers=headers)
+
+        if response.status_code != 200:
+            print(f"❌ Failed to load page {page} (status {response.status_code})")
             break
 
-        soup = BeautifulSoup(r.text, "html.parser")
+        soup = BeautifulSoup(response.text, "html.parser")
         table = soup.find("table", class_="data-table")
+
         if not table:
-            print(f"✅ No table found on page {page}, ending loop.")
+            print(f"❌ No table found on page {page}, printing HTML for debug")
+            with open("debug_page.html", "w", encoding="utf-8") as f:
+                f.write(response.text)
             break
 
-        rows = table.find_all("tr")[1:]  # skip the header
+        rows = table.find_all("tr")
         stock_rows = []
-        for row in rows:
+
+        for row in rows[1:]:  # skip header
             cols = row.find_all("td")
             if len(cols) < 6:
                 continue
-            if cols[0].find("a", href=True):
-                stock_rows.append(row)
+            link = cols[0].find("a", href=True)
+            if link:
+                stock_rows.append((cols, link))
 
         print(f"🔍 Found {len(stock_rows)} stock rows on page {page}")
-        if len(stock_rows) == 0:
+        if not stock_rows:
             break
 
-        for row in stock_rows:
-            cols = row.find_all("td")
+        for cols, link in stock_rows:
             try:
-                symbol = cols[0].find("a")["href"].split("/")[2].strip().upper()
+                symbol = link["href"].split("/")[2].strip().upper()
                 if not symbol.endswith(".NS"):
                     symbol += ".NS"
 
@@ -77,6 +87,7 @@ def update_tickers():
         page += 1
 
     print(f"📊 Total stocks collected: {len(stocks)}")
+
     sorted_stocks = sorted(stocks, key=lambda x: x["score"], reverse=True)
     top_500 = sorted_stocks[:500]
 
