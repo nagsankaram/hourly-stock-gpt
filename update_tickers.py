@@ -26,23 +26,16 @@ def update_tickers():
             break
 
         rows = table.find_all("tr")[1:]
-        if not rows:
-            print(f"✅ No more rows on page {page}, ending loop.")
+        stock_rows = [row for row in rows if row.find_all("td")[0].find("a", href=True)]
+        print(f"🔍 Found {len(stock_rows)} stock rows on page {page}")
+
+        if len(stock_rows) == 0:
             break
 
-        print(f"🔍 Found {len(rows)} rows on page {page}")
-
-        for row in rows:
+        for row in stock_rows:
             cols = row.find_all("td")
-            if len(cols) < 6:
-                continue
-
-            link = cols[0].find("a", href=True)
-            if not link:
-                continue
-
             try:
-                symbol = link["href"].split("/")[2].strip().upper()
+                symbol = cols[0].find("a")["href"].split("/")[2].strip().upper()
                 if not symbol.endswith(".NS"):
                     symbol += ".NS"
 
@@ -60,13 +53,12 @@ def update_tickers():
                 })
 
             except Exception as e:
-                print(f"⚠️ Skipped row due to error: {e}")
+                print(f"⚠️ Skipped row: {e}")
                 continue
 
         page += 1
 
     print(f"📊 Total stocks collected: {len(stocks)}")
-
     sorted_stocks = sorted(stocks, key=lambda x: x["score"], reverse=True)
     top_500 = sorted_stocks[:500]
 

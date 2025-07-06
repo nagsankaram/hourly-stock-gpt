@@ -1,36 +1,39 @@
-name: Hourly Stock Bot with Auto-Ticker
+name: Stock Bot
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Every hour
+    - cron: "30 * * * *"  # every hour at :30
   workflow_dispatch:
 
 jobs:
-  run:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install yfinance requests
+        run: pip install requests beautifulsoup4
 
-      - name: Update tickers list
+      - name: Update tickers
         run: python update_tickers.py
 
-      - name: Run stock analysis bot
+      - name: Run LLM bot
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python bot.py
 
-      - name: Commit changes
+      - name: Push updated tickers and report
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config --global user.email "nagendrakumars@yahoo.co.uk"
           git config --global user.name "HourlyBot"
-          git add tickers.csv report.md
-          git commit -m "Update tickers and report"
-          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/nagsankaram/hourly-stock-gpt.git
+          git add tickers.csv report.md || echo "Nothing to add"
+          git commit -m "Update tickers and report" || echo "Nothing to commit"
+          git push https://x-access-token:${GH_TOKEN}@github.com/nagsankaram/hourly-stock-gpt.git
