@@ -44,20 +44,24 @@ def generate_prompt(ticker_lines):
     return f"""
 You are a professional Indian stock trader and advisor.
 
-Below are current CMPs (Current Market Prices) for 500 stocks:
+Below are current CMPs (Current Market Prices) for 500 NSE stocks:
 
 {chr(10).join(ticker_lines)}
 
 Classify 3–5 stocks into each of the following categories:
-- 📉 Short-term (1–5 days)
-- 📈 Mid-term (2–8 weeks)
-- 🏦 Long-term (3+ months)
 
-Use this format exactly:
+## Short-term (1–5 days)
+## Mid-term (2–8 weeks)
+## Long-term (3+ months)
+
+🔁 For each category, list 3–5 stocks using ONLY this format:
+
 - SYMBOL — Entry: ₹XXX, Target: ₹YYY, Stop Loss: ₹ZZZ — Reason: ...
 
-✅ Don't repeat any stock in multiple categories.
-✅ Ensure entry price is near CMP. Be precise and concise.
+✅ Do NOT include any explanation before or after the list.
+✅ Do NOT comment on your reasoning or say things like "Let's begin".
+✅ Output only markdown with clean headers and bullet points.
+✅ Use only tickers from the list above. Do not repeat stocks across categories.
 """
 
 def main():
