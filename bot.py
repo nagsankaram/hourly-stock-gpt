@@ -3,9 +3,9 @@ import requests
 import csv
 from datetime import datetime
 
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-MODEL = "deepseek/deepseek-chat-v3-0324:free"
-OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+TOGETHER_API_KEY = os.getenv("TOGETHER_API_KEY")
+MODEL = "mistralai/Mixtral-8x7B-Instruct-v0.1"
+TOGETHER_URL = "https://api.together.xyz/v1/chat/completions"
 
 def read_tickers():
     with open("tickers.csv", "r") as f:
@@ -13,7 +13,7 @@ def read_tickers():
 
 def ask_llm(prompt):
     headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Authorization": f"Bearer {TOGETHER_API_KEY}",
         "Content-Type": "application/json"
     }
     body = {
@@ -23,7 +23,7 @@ def ask_llm(prompt):
     }
 
     try:
-        response = requests.post(OPENROUTER_URL, headers=headers, json=body)
+        response = requests.post(TOGETHER_URL, headers=headers, json=body)
         result = response.json()
         if "choices" not in result:
             print("LLM error:", result)
