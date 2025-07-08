@@ -2,19 +2,19 @@
 layout: default
 ---
 
-# 📈 Hourly Stock GPT Report (2025-07-07 09:24 IST)
+# 📈 Hourly Stock GPT Report (2025-07-08 09:19 IST)
 
 ## Short-term (1–5 days)
-- NMDC.NS — Entry: ₹68, Target: ₹72, Stop Loss: ₹65 — Reason: Positive momentum in metals sector.
-- IGL.NS — Entry: ₹225, Target: ₹235, Stop Loss: ₹220 — Reason: Expected demand in gas utilities.
-- TATAMOTORS.NS — Entry: ₹680, Target: ₹700, Stop Loss: ₹670 — Reason: Strong automotive sales data.
+- TATAMOTORS.NS — Entry: ₹691.4, Target: ₹720.0, Stop Loss: ₹670.0 — Reason: Potential short-term volatility due to market sentiment.
+- ITC.NS — Entry: ₹416.0, Target: ₹430.0, Stop Loss: ₹405.0 — Reason: Expected short-term price appreciation based on recent volume trends.
+- BEL.NS — Entry: ₹417.35, Target: ₹430.0, Stop Loss: ₹410.0 — Reason: Momentum indicators suggest a possible short-term rally.
 
 ## Mid-term (2–8 weeks)
-- COALINDIA.NS — Entry: ₹385, Target: ₹410, Stop Loss: ₹375 — Reason: Government support and coal demand.
-- BPCL.NS — Entry: ₹345, Target: ₹370, Stop Loss: ₹340 — Reason: Oil sector recovery expected.
-- POWERGRID.NS — Entry: ₹290, Target: ₹310, Stop Loss: ₹285 — Reason: Infrastructure spending boost.
+- SUNPHARMA.NS — Entry: ₹1679.9, Target: ₹1800.0, Stop Loss: ₹1600.0 — Reason: Recovery expected in the pharmaceutical sector.
+- NTPC.NS — Entry: ₹338.0, Target: ₹360.0, Stop Loss: ₹320.0 — Reason: Positive outlook for the energy sector.
+- COALINDIA.NS — Entry: ₹384.5, Target: ₹410.0, Stop Loss: ₹370.0 — Reason: Strong demand expectations for coal.
 
 ## Long-term (3+ months)
-- ITC.NS — Entry: ₹410, Target: ₹450, Stop Loss: ₹400 — Reason: Diversified business with growth potential.
-- HINDALCO.NS — Entry: ₹690, Target: ₹750, Stop Loss: ₹680 — Reason: Aluminum demand expected to rise.
-- NTPC.NS — Entry: ₹335, Target: ₹370, Stop Loss: ₹330 — Reason: Renewable energy expansion plans.
+- IRCTC.NS — Entry: ₹785.15, Target: ₹900.0, Stop Loss: ₹750.0 — Reason: Long-term growth potential in tourism and railways.
+- INFY.NS — Entry: ₹1628.2, Target: ₹1800.0, Stop Loss: ₹1550.0 — Reason: Stable performance in the IT sector.
+- HCLTECH.NS — Entry: ₹1709.85, Target: ₹1900.0, Stop Loss: ₹1650.0 — Reason: Consistent growth in the technology industry.
