@@ -2,19 +2,22 @@
 layout: default
 ---
 
-# 📈 Hourly Stock GPT Report (2025-07-08 09:19 IST)
+# 📈 Hourly Stock GPT Report (2025-07-09 09:22 IST)
 
 ## Short-term (1–5 days)
-- TATAMOTORS.NS — Entry: ₹691.4, Target: ₹720.0, Stop Loss: ₹670.0 — Reason: Potential short-term volatility due to market sentiment.
-- ITC.NS — Entry: ₹416.0, Target: ₹430.0, Stop Loss: ₹405.0 — Reason: Expected short-term price appreciation based on recent volume trends.
-- BEL.NS — Entry: ₹417.35, Target: ₹430.0, Stop Loss: ₹410.0 — Reason: Momentum indicators suggest a possible short-term rally.
+- JPPOWER.NS — Entry: ₹20, Target: ₹25, Stop Loss: ₹18 — Reason: Undervalued with potential bounce
+- SUZLON.NS — Entry: ₹60, Target: ₹70, Stop Loss: ₹55 — Reason: Possible correction
+- BELRISE.NS — Entry: ₹100, Target: ₹120, Stop Loss: ₹90 — Reason: Momentum buildup
 
 ## Mid-term (2–8 weeks)
-- SUNPHARMA.NS — Entry: ₹1679.9, Target: ₹1800.0, Stop Loss: ₹1600.0 — Reason: Recovery expected in the pharmaceutical sector.
-- NTPC.NS — Entry: ₹338.0, Target: ₹360.0, Stop Loss: ₹320.0 — Reason: Positive outlook for the energy sector.
-- COALINDIA.NS — Entry: ₹384.5, Target: ₹410.0, Stop Loss: ₹370.0 — Reason: Strong demand expectations for coal.
+- NMDC.NS — Entry: ₹65, Target: ₹75, Stop Loss: ₹60 — Reason: Sectoral demand
+- COALINDIA.NS — Entry: ₹350, Target: ₹400, Stop Loss: ₹320 — Reason: Strong fundamentals
+- MSUMI.NS — Entry: ₹60, Target: ₹70, Stop Loss: ₹55 — Reason: Growth potential
+- BPCL.NS — Entry: ₹340, Target: ₹380, Stop Loss: ₹310 — Reason: Energy sector stability
 
 ## Long-term (3+ months)
-- IRCTC.NS — Entry: ₹785.15, Target: ₹900.0, Stop Loss: ₹750.0 — Reason: Long-term growth potential in tourism and railways.
-- INFY.NS — Entry: ₹1628.2, Target: ₹1800.0, Stop Loss: ₹1550.0 — Reason: Stable performance in the IT sector.
-- HCLTECH.NS — Entry: ₹1709.85, Target: ₹1900.0, Stop Loss: ₹1650.0 — Reason: Consistent growth in the technology industry.
+- TATAMOTORS.NS — Entry: ₹650, Target: ₹750, Stop Loss: ₹600 — Reason: Automotive growth
+- ITC.NS — Entry: ₹400, Target: ₹450, Stop Loss: ₹370 — Reason: FMCG stability
+- INFY.NS — Entry: ₹1500, Target: ₹1700, Stop Loss: ₹1400 — Reason: IT sector growth
+- HCLTECH.NS — Entry: ₹1600, Target: ₹1800, Stop Loss: ₹1500 — Reason: IT sector growth
+- ONGC.NS — Entry: ₹230, Target: ₹260, Stop Loss: ₹210 — Reason: Energy sector growth
