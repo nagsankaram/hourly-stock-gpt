@@ -2,19 +2,19 @@
 layout: default
 ---
 
-# 📈 Hourly Stock GPT Report (2025-07-14 09:31 IST)
+# 📈 Hourly Stock GPT Report (2025-07-15 09:28 IST)
 
 ## Short-term (1–5 days)
-- SUZLON.NS — Entry: ₹66.15, Target: ₹70.00, Stop Loss: ₹63.00 — Reason: Undervalued with potential for quick rebound.
-- COALINDIA.NS — Entry: ₹384.20, Target: ₹400.00, Stop Loss: ₹370.00 — Reason: Momentum in energy sector.
-- HINDALCO.NS — Entry: ₹671.85, Target: ₹700.00, Stop Loss: ₹650.00 — Reason: Short-term upside in metals.
+- SUZLON.NS — Entry: ₹65.0, Target: ₹70.0, Stop Loss: ₹63.0 — Reason: Potential breakout from current consolidation.
+- COALINDIA.NS — Entry: ₹380.0, Target: ₹400.0, Stop Loss: ₹370.0 — Reason: Strong volume accumulation.
+- TATAMOTORS.NS — Entry: ₹670.0, Target: ₹700.0, Stop Loss: ₹660.0 — Reason: Momentum buildup.
 
 ## Mid-term (2–8 weeks)
-- NMDC.NS — Entry: ₹69.16, Target: ₹80.00, Stop Loss: ₹65.00 — Reason: Expected sector growth.
-- BEL.NS — Entry: ₹407.90, Target: ₹450.00, Stop Loss: ₹390.00 — Reason: Defense sector momentum.
-- NTPC.NS — Entry: ₹344.30, Target: ₹380.00, Stop Loss: ₹330.00 — Reason: Utility sector stability.
+- INFY.NS — Entry: ₹1550.0, Target: ₹1650.0, Stop Loss: ₹1500.0 — Reason: Expected IT sector growth.
+- HINDZINC.NS — Entry: ₹430.0, Target: ₹460.0, Stop Loss: ₹420.0 — Reason: Positive sector outlook.
+- ADANIPOWER.NS — Entry: ₹600.0, Target: ₹650.0, Stop Loss: ₹590.0 — Reason: Renewable energy push.
 
 ## Long-term (3+ months)
-- TCS.NS — Entry: ₹3244.60, Target: ₹3500.00, Stop Loss: ₹3100.00 — Reason: IT sector growth.
-- HINDUNILVR.NS — Entry: ₹2510.00, Target: ₹2800.00, Stop Loss: ₹2400.00 — Reason: FMCG stability.
-- LT.NS — Entry: ₹3522.85, Target: ₹4000.00, Stop Loss: ₹3400.00 — Reason: Conglomerate diversification.
+- HINDUNILVR.NS — Entry: ₹2500.0, Target: ₹2700.0, Stop Loss: ₹2450.0 — Reason: FMCG sector stability.
+- TCS.NS — Entry: ₹3200.0, Target: ₹3400.0, Stop Loss: ₹3100.0 — Reason: Strong IT fundamentals.
+- ITC.NS — Entry: ₹415.0, Target: ₹450.0, Stop Loss: ₹400.0 — Reason: Diversified growth potential.
