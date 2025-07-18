@@ -2,25 +2,19 @@
 layout: default
 ---
 
-# 📈 Hourly Stock GPT Report (2025-07-17 09:27 IST)
+# 📈 Hourly Stock GPT Report (2025-07-18 09:28 IST)
 
 ## Short-term (1–5 days)
-- NMDC.NS — Entry: ₹69.03, Target: ₹72.00, Stop Loss: ₹66.50 — Reason: Strong technical indicators suggest short-term upside.
-- SUZLON.NS — Entry: ₹66.71, Target: ₹70.00, Stop Loss: ₹64.50 — Reason: Momentum indicators show potential for short-term gain.
-- COALINDIA.NS — Entry: ₹386.9, Target: ₹400.00, Stop Loss: ₹380.00 — Reason: Sectoral tailwinds expected in the short term.
-- NATIONALUM.NS — Entry: ₹190.55, Target: ₹200.00, Stop Loss: ₹185.00 — Reason: Recent volume spike indicates short-term interest.
-- CRIZAC.NS — Entry: ₹355.65, Target: ₹370.00, Stop Loss: ₹350.00 — Reason: Breakout above resistance levels expected.
+- INFY.NS — Entry: ₹1589.5, Target: ₹1620.0, Stop Loss: ₹1560.0 — Reason: Strong IT sector outlook
+- TATAMOTORS.NS — Entry: ₹682.35, Target: ₹700.0, Stop Loss: ₹670.0 — Reason: Expected volatility
+- HCLTECH.NS — Entry: ₹1542.2, Target: ₹1580.0, Stop Loss: ₹1520.0 — Reason: Positive sector momentum
 
 ## Mid-term (2–8 weeks)
-- MCLOUD.NS — Entry: ₹102.85, Target: ₹115.00, Stop Loss: ₹98.00 — Reason: Mid-term technical setup looks promising.
-- WAAREERTL.NS — Entry: ₹1250.0, Target: ₹1350.00, Stop Loss: ₹1200.00 — Reason: Fundamental strength and mid-term growth potential.
-- SWANENERGY.NS — Entry: ₹518.7, Target: ₹550.00, Stop Loss: ₹500.00 — Reason: Mid-term momentum expected in the sector.
-- RELINFRA.NS — Entry: ₹398.0, Target: ₹425.00, Stop Loss: ₹380.00 — Reason: Mid-term recovery expected in infrastructure stocks.
-- EIEL.NS — Entry: ₹282.45, Target: ₹300.00, Stop Loss: ₹270.00 — Reason: Mid-term technical targets achievable.
+- COALINDIA.NS — Entry: ₹387.0, Target: ₹410.0, Stop Loss: ₹370.0 — Reason: Steady demand expectations
+- ITC.NS — Entry: ₹424.0, Target: ₹440.0, Stop Loss: ₹410.0 — Reason: FMCG sector growth
+- POWERGRID.NS — Entry: ₹298.0, Target: ₹310.0, Stop Loss: ₹290.0 — Reason: Infrastructure focus
 
 ## Long-term (3+ months)
-- TATAMOTORS.NS — Entry: ₹681.4, Target: ₹750.00, Stop Loss: ₹650.00 — Reason: Long-term growth in automotive sector expected.
-- TI.NS — Entry: ₹399.55, Target: ₹450.00, Stop Loss: ₹380.00 — Reason: Fundamental strength and long-term growth potential.
-- ITC.NS — Entry: ₹425.15, Target: ₹475.00, Stop Loss: ₹400.00 — Reason: Long-term stability and growth in FMCG sector.
-- BPCL.NS — Entry: ₹345.9, Target: ₹400.00, Stop Loss: ₹330.00 — Reason: Long-term potential in energy sector.
-- BELRISE.NS — Entry: ₹123.0, Target: ₹150.00, Stop Loss: ₹115.00 — Reason: Long-term growth expected in specialty chemicals.
+- TCS.NS — Entry: ₹3215.1, Target: ₹3400.0, Stop Loss: ₹3100.0 — Reason: Long-term IT growth
+- HDFCAMC.NS — Entry: ₹5584.9, Target: ₹5800.0, Stop Loss: ₹5400.0 — Reason: Financial sector stability
+- SUNPHARMA.NS — Entry: ₹1700.0, Target: ₹1800.0, Stop Loss: ₹1650.0 — Reason: Pharmaceutical sector potential
