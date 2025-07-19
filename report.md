@@ -2,19 +2,19 @@
 layout: default
 ---
 
-# 📈 Hourly Stock GPT Report (2025-07-18 09:28 IST)
+# 📈 Hourly Stock GPT Report (2025-07-19 09:21 IST)
 
-## Short-term (1–5 days)
-- INFY.NS — Entry: ₹1589.5, Target: ₹1620.0, Stop Loss: ₹1560.0 — Reason: Strong IT sector outlook
-- TATAMOTORS.NS — Entry: ₹682.35, Target: ₹700.0, Stop Loss: ₹670.0 — Reason: Expected volatility
-- HCLTECH.NS — Entry: ₹1542.2, Target: ₹1580.0, Stop Loss: ₹1520.0 — Reason: Positive sector momentum
+## Short-term (1–5 days)  
+- TATAMOTORS.NS — Entry: ₹680, Target: ₹710, Stop Loss: ₹650 — Reason: Volatile stock with potential for quick gains.  
+- HINDALCO.NS — Entry: ₹675, Target: ₹700, Stop Loss: ₹650 — Reason: Strong momentum expected in the short term.  
+- BEL.NS — Entry: ₹395, Target: ₹410, Stop Loss: ₹380 — Reason: Stable performance with short-term upside potential.  
 
-## Mid-term (2–8 weeks)
-- COALINDIA.NS — Entry: ₹387.0, Target: ₹410.0, Stop Loss: ₹370.0 — Reason: Steady demand expectations
-- ITC.NS — Entry: ₹424.0, Target: ₹440.0, Stop Loss: ₹410.0 — Reason: FMCG sector growth
-- POWERGRID.NS — Entry: ₹298.0, Target: ₹310.0, Stop Loss: ₹290.0 — Reason: Infrastructure focus
+## Mid-term (2–8 weeks)  
+- COALINDIA.NS — Entry: ₹388, Target: ₹420, Stop Loss: ₹370 — Reason: Expected demand in energy sector.  
+- JSWSTEEL.NS — Entry: ₹676, Target: ₹720, Stop Loss: ₹650 — Reason: Positive outlook for steel industry.  
+- ADANIPOWER.NS — Entry: ₹594, Target: ₹640, Stop Loss: ₹570 — Reason: Potential rebound in power sector.  
 
-## Long-term (3+ months)
-- TCS.NS — Entry: ₹3215.1, Target: ₹3400.0, Stop Loss: ₹3100.0 — Reason: Long-term IT growth
-- HDFCAMC.NS — Entry: ₹5584.9, Target: ₹5800.0, Stop Loss: ₹5400.0 — Reason: Financial sector stability
-- SUNPHARMA.NS — Entry: ₹1700.0, Target: ₹1800.0, Stop Loss: ₹1650.0 — Reason: Pharmaceutical sector potential
+## Long-term (3+ months)  
+- HCLTECH.NS — Entry: ₹1548, Target: ₹1700, Stop Loss: ₹1480 — Reason: Strong fundamentals in IT sector.  
+- INFY.NS — Entry: ₹1586, Target: ₹1800, Stop Loss: ₹1500 — Reason: Long-term growth in IT services.  
+- LT.NS — Entry: ₹3464, Target: ₹3800, Stop Loss: ₹3300 — Reason: Diversified conglomerate with steady growth.
