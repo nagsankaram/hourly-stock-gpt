@@ -2,23 +2,25 @@
 layout: default
 ---
 
-# 📈 Hourly Stock GPT Report (2025-07-24 09:29 IST)
+# 📈 Hourly Stock GPT Report (2025-07-25 09:28 IST)
 
 ## Short-term (1–5 days)
-- INFY.NS — Entry: ₹1566, Target: ₹1600, Stop Loss: ₹1540 — Reason: Expected positive IT sector news
-- TCS.NS — Entry: ₹3165.95, Target: ₹3200, Stop Loss: ₹3100 — Reason: Anticipated sectoral momentum
-- COALINDIA.NS — Entry: ₹389.45, Target: ₹400, Stop Loss: ₹380 — Reason: Potential government policy impact
-- IGL.NS — Entry: ₹209.6, Target: ₹215, Stop Loss: ₹205 — Reason: Expected demand surge
-- ONGC.NS — Entry: ₹246.1, Target: ₹250, Stop Loss: ₹240 — Reason: Fluctuating oil prices
+- INFY.NS — Entry: ₹1542.9, Target: ₹1600.0, Stop Loss: ₹1500.0 — Reason: Strong IT sector momentum
+- TATAMOTORS.NS — Entry: ₹697.0, Target: ₹725.0, Stop Loss: ₹675.0 — Reason: Electric vehicle growth potential
+- HCLTECH.NS — Entry: ₹1508.95, Target: ₹1550.0, Stop Loss: ₹1480.0 — Reason: Stable earnings expectations
+- COALINDIA.NS — Entry: ₹384.9, Target: ₹400.0, Stop Loss: ₹370.0 — Reason: Energy sector tailwinds
+- IEX.NS — Entry: ₹145.65, Target: ₹155.0, Stop Loss: ₹140.0 — Reason: Power sector demand
 
 ## Mid-term (2–8 weeks)
-- HINDALCO.NS — Entry: ₹699.0, Target: ₹725, Stop Loss: ₹675 — Reason: Expected metal demand
-- HINDCOPPER.NS — Entry: ₹275.7, Target: ₹290, Stop Loss: ₹265 — Reason: Strong fundamental growth
-- IEX.NS — Entry: ₹169.1, Target: ₹175, Stop Loss: ₹165 — Reason: Regulatory changes anticipation
-- TATAMOTORS.NS — Entry: ₹703.05, Target: ₹725, Stop Loss: ₹685 — Reason: Electric vehicle expansion
-- GAIL.NS — Entry: ₹187.95, Target: ₹195, Stop Loss: ₹185 — Reason: Gas sector trends
+- PERSISTENT.NS — Entry: ₹5200.0, Target: ₹5400.0, Stop Loss: ₹5000.0 — Reason: High growth in IT services
+- TCS.NS — Entry: ₹3141.6, Target: ₹3200.0, Stop Loss: ₹3100.0 — Reason: Blue-chip IT leader
+- WIPRO.NS — Entry: ₹261.55, Target: ₹275.0, Stop Loss: ₹255.0 — Reason: Mid-tier IT growth
+- CIPLA.NS — Entry: ₹1478.0, Target: ₹1550.0, Stop Loss: ₹1450.0 — Reason: Pharmaceutical sector stability
+- COALINDIA.NS — Entry: ₹384.9, Target: ₹420.0, Stop Loss: ₹370.0 — Reason: Sustained energy demand
 
 ## Long-term (3+ months)
-- HINDUNILVR.NS — Entry: ₹2461.4, Target: ₹2600, Stop Loss: ₹2400 — Reason: Consistent FMCG performance
-- ITC.NS — Entry: ₹415.25, Target: ₹440, Stop Loss: ₹400 — Reason: Diversified portfolio strength
-- TCS.NS — Entry: ₹3165.95, Target: ₹3300, Stop Loss: ₹3100 — Reason: IT sector growth prospects
+- INFY.NS — Entry: ₹1542.9, Target: ₹1700.0, Stop Loss: ₹1500.0 — Reason: Long-term IT growth
+- HCLTECH.NS — Entry: ₹1508.95, Target: ₹1650.0, Stop Loss: ₹1480.0 — Reason: Steady IT sector growth
+- TCS.NS — Entry: ₹3141.6, Target: ₹3300.0, Stop Loss: ₹3100.0 — Reason: Market leader in IT
+- PERSISTENT.NS — Entry: ₹5200.0, Target: ₹5600.0, Stop Loss: ₹5000.0 — Reason: High growth potential
+- CIPLA.NS — Entry: ₹1478.0, Target: ₹1600.0, Stop Loss: ₹1450.0 — Reason: Pharmaceutical expansion
