@@ -2,19 +2,19 @@
 layout: default
 ---
 
-# 📈 Hourly Stock GPT Report (2025-07-30 09:33 IST)
+# 📈 Hourly Stock GPT Report (2025-07-31 09:32 IST)
 
 ## Short-term (1–5 days)
-- JAYNECOIND.NS — Entry: ₹53.04, Target: ₹55.00, Stop Loss: ₹51.00 — Reason: Potential breakout from current consolidation.
-- IEX.NS — Entry: ₹136.20, Target: ₹140.00, Stop Loss: ₹132.00 — Reason: Expected volatility due to upcoming sector news.
-- COALINDIA.NS — Entry: ₹381.40, Target: ₹395.00, Stop Loss: ₹370.00 — Reason: Strong momentum in energy stocks.
+- IEX.NS — Entry: ₹130, Target: ₹145, Stop Loss: ₹125 — Reason: Momentum pickup with positive news flow in energy sector.
+- JPPOWER.NS — Entry: ₹20, Target: ₹22.5, Stop Loss: ₹18.5 — Reason: Oversold conditions with potential rebound.
+- SUZLON.NS — Entry: ₹58, Target: ₹63, Stop Loss: ₹55 — Reason: Volatile stock with potential short-term upswing.
 
 ## Mid-term (2–8 weeks)
-- TATAMOTORS.NS — Entry: ₹668.50, Target: ₹700.00, Stop Loss: ₹640.00 — Reason: Positive outlook in automotive sector.
-- GAIL.NS — Entry: ₹181.80, Target: ₹190.00, Stop Loss: ₹175.00 — Reason: Expected demand in gas sector.
-- BEL.NS — Entry: ₹389.10, Target: ₹405.00, Stop Loss: ₹380.00 — Reason: Defense sector tailwinds.
+- TATAMOTORS.NS — Entry: ₹640, Target: ₹700, Stop Loss: ₹600 — Reason: Strong momentum with improving fundamentals in auto sector.
+- ITC.NS — Entry: ₹400, Target: ₹430, Stop Loss: ₹380 — Reason: Undervalued with consistent dividend yield.
+- HINDUNILVR.NS — Entry: ₹2400, Target: ₹2600, Stop Loss: ₹2300 — Reason: Steady growth in FMCG sector with strong earnings visibility.
 
 ## Long-term (3+ months)
-- INFY.NS — Entry: ₹1509.90, Target: ₹1550.00, Stop Loss: ₹1480.00 — Reason: IT sector growth prospects.
-- HCLTECH.NS — Entry: ₹1476.85, Target: ₹1500.00, Stop Loss: ₹1450.00 — Reason: Consistent performance in IT services.
-- TCS.NS — Entry: ₹3061.25, Target: ₹3100.00, Stop Loss: ₹3020.00 — Reason: Leadership in IT sector.
+- INFY.NS — Entry: ₹1500, Target: ₹1700, Stop Loss: ₹1400 — Reason: Strong IT sector outlook with improving margins.
+- NTPC.NS — Entry: ₹335, Target: ₹380, Stop Loss: ₹320 — Reason: Regulatory tailwinds and renewable energy push.
+- ASIANPAINT.NS — Entry: ₹2400, Target: ₹2700, Stop Loss: ₹2300 — Reason: Consistent market share gain and premiumization strategy.
