@@ -2,20 +2,19 @@
 layout: default
 ---
 
-# 📈 Hourly Stock GPT Report (2025-08-02 09:25 IST)
+# 📈 Hourly Stock GPT Report (2025-08-03 09:38 IST)
 
 ## Short-term (1–5 days)
-- SUZLON.NS — Entry: ₹65, Target: ₹72, Stop Loss: ₹60 — Reason: Potential short-term catalyst expected
-- JAYNECOIND.NS — Entry: ₹48, Target: ₹55, Stop Loss: ₹45 — Reason: Bullish divergence spotted
-- JPPOWER.NS — Entry: ₹20, Target: ₹24, Stop Loss: ₹18 — Reason: Oversold bounce expected
+- JAYNECOIND.NS — Entry: ₹48, Target: ₹52, Stop Loss: ₹45 — Reason: Potential breakout above resistance level
+- COALINDIA.NS — Entry: ₹370, Target: ₹380, Stop Loss: ₹360 — Reason: Expected volatility due to sector news
+- ADANIPOWER.NS — Entry: ₹560, Target: ₹580, Stop Loss: ₹550 — Reason: Momentum buildup in the stock
 
 ## Mid-term (2–8 weeks)
-- COALINDIA.NS — Entry: ₹370, Target: ₹420, Stop Loss: ₹350 — Reason: Strong sector outlook
-- NMDC.NS — Entry: ₹70, Target: ₹85, Stop Loss: ₹65 — Reason: Rising demand for minerals
-- TATAMOTORS.NS — Entry: ₹645, Target: ₹750, Stop Loss: ₹620 — Reason: Improving automotive sector
+- TATAMOTORS.NS — Entry: ₹640, Target: ₹680, Stop Loss: ₹620 — Reason: Positive outlook in automotive sector
+- HINDALCO.NS — Entry: ₹670, Target: ₹710, Stop Loss: ₹650 — Reason: Expected demand in infrastructure projects
+- NTPC.NS — Entry: ₹330, Target: ₹350, Stop Loss: ₹320 — Reason: Stable performance in energy sector
 
 ## Long-term (3+ months)
-- ITC.NS — Entry: ₹415, Target: ₹500, Stop Loss: ₹390 — Reason: Diversified business model
-- INFY.NS — Entry: ₹1460, Target: ₹1800, Stop Loss: ₹1400 — Reason: IT sector growth
-- TCS.NS — Entry: ₹3000, Target: ₹3600, Stop Loss: ₹2900 — Reason: Market leader in IT services
-- HINDALCO.NS — Entry: ₹670, Target: ₹800, Stop Loss: ₹640 — Reason: Aluminum demand growth
+- SUNPHARMA.NS — Entry: ₹1625, Target: ₹1800, Stop Loss: ₹1600 — Reason: Strong fundamentals in pharma industry
+- ITC.NS — Entry: ₹415, Target: ₹440, Stop Loss: ₹400 — Reason: Diversified business model with growth potential
+- HINDUNILVR.NS — Entry: ₹2550, Target: ₹2800, Stop Loss: ₹2500 — Reason: Consistent performance in FMCG sector
